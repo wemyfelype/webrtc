@@ -2,11 +2,12 @@ var express = require('express');
 var http = require('http');
 var app = express();
 
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+var webrtc = require('./routes/webrtc');
 
-module.exports
+app.use('/', webrtc);
+app.use('/webrtc', webrtc);
+
+
 var server = http.createServer(app).listen(3000, function () {
     console.log('Example app listening on port 3000!');
 });
